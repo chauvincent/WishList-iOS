@@ -79,6 +79,7 @@
 		75F5F9131DC83411008B70DD /* WishList */ = {
 			isa = PBXGroup;
 			children = (
+				75F5F9471DC83C9F008B70DD /* Model */,
 				75F5F9141DC83411008B70DD /* AppDelegate.swift */,
 				75F5F9161DC83411008B70DD /* ViewController.swift */,
 				75F5F9181DC83411008B70DD /* Main.storyboard */,
@@ -97,6 +98,13 @@
 				75F5F92E1DC83411008B70DD /* Info.plist */,
 			);
 			path = WishListTests;
+			sourceTree = "<group>";
+		};
+		75F5F9471DC83C9F008B70DD /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Model;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -408,6 +416,7 @@
 				75F5F9331DC83411008B70DD /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		75F5F9341DC83411008B70DD /* Build configuration list for PBXNativeTarget "WishListTests" */ = {
 			isa = XCConfigurationList;
@@ -416,6 +425,7 @@
 				75F5F9361DC83411008B70DD /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 
