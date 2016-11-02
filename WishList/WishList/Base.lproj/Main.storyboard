@@ -48,7 +48,7 @@
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ifX-Hg-SUa">
                                                     <rect key="frame" x="8" y="8" width="327" height="133"/>
                                                     <subviews>
-                                                        <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Mmf-87-YzS">
+                                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="car" translatesAutoresizingMaskIntoConstraints="NO" id="Mmf-87-YzS">
                                                             <rect key="frame" x="8" y="16" width="100" height="100"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="height" constant="100" id="8Tz-6I-mAC"/>
@@ -96,6 +96,9 @@
                                                         <constraint firstItem="wrY-Cu-hvA" firstAttribute="top" secondItem="qmy-un-10F" secondAttribute="bottom" constant="8" id="rkD-fs-M0c"/>
                                                         <constraint firstItem="wrY-Cu-hvA" firstAttribute="leading" secondItem="Mmf-87-YzS" secondAttribute="trailing" constant="8" id="znW-4K-eVr"/>
                                                     </constraints>
+                                                    <userDefinedRuntimeAttributes>
+                                                        <userDefinedRuntimeAttribute type="boolean" keyPath="materialStyle" value="YES"/>
+                                                    </userDefinedRuntimeAttributes>
                                                 </view>
                                             </subviews>
                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
@@ -150,4 +153,7 @@
             <point key="canvasLocation" x="5.5999999999999996" y="691.304347826087"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="car" width="448" height="252"/>
+    </resources>
 </document>

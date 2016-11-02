@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		75A1E79E1DC9736B006996C0 /* UIView+Material.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75A1E79D1DC9736B006996C0 /* UIView+Material.swift */; };
 		75F5F9151DC83411008B70DD /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75F5F9141DC83411008B70DD /* AppDelegate.swift */; };
 		75F5F9171DC83411008B70DD /* HomeVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75F5F9161DC83411008B70DD /* HomeVC.swift */; };
 		75F5F91A1DC83411008B70DD /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 75F5F9181DC83411008B70DD /* Main.storyboard */; };
@@ -27,6 +28,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		75A1E79D1DC9736B006996C0 /* UIView+Material.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView+Material.swift"; sourceTree = "<group>"; };
 		75F5F9111DC83411008B70DD /* WishList.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WishList.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		75F5F9141DC83411008B70DD /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		75F5F9161DC83411008B70DD /* HomeVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeVC.swift; sourceTree = "<group>"; };
@@ -81,6 +83,7 @@
 			children = (
 				75F5F9471DC83C9F008B70DD /* Model */,
 				75F5F9141DC83411008B70DD /* AppDelegate.swift */,
+				75A1E79D1DC9736B006996C0 /* UIView+Material.swift */,
 				75F5F9161DC83411008B70DD /* HomeVC.swift */,
 				75F5F9181DC83411008B70DD /* Main.storyboard */,
 				75F5F91E1DC83411008B70DD /* Assets.xcassets */,
@@ -213,6 +216,7 @@
 				75F5F9171DC83411008B70DD /* HomeVC.swift in Sources */,
 				75F5F9151DC83411008B70DD /* AppDelegate.swift in Sources */,
 				75F5F91D1DC83411008B70DD /* WishList.xcdatamodeld in Sources */,
+				75A1E79E1DC9736B006996C0 /* UIView+Material.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
