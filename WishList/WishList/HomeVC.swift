@@ -20,40 +20,91 @@ class HomeVC: UIViewController, UITableViewDelegate, UITableViewDataSource, NSFe
         super.viewDidLoad()
         itemTableView.delegate = self
         itemTableView.dataSource = self
+        
+        attemptFetch()
+        loadFakeData()
       
     }
 
     // MARK: - UITableViewDataSource
     
-    func numberOfSections(in tableView: UITableView) -> Int {
-        return 1
+
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        
+        if let sections = fetchedResultsController.sections {
+            let sectionInfo = sections[section]
+            return sectionInfo.numberOfObjects
+        }
+        
+        return 0
     }
     
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 1
+    func numberOfSections(in tableView: UITableView) -> Int {
+        
+        if let sections = fetchedResultsController.sections {
+            return sections.count
+        }
+        
+        return 0
     }
-
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 150
+    }
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "ItemCell", for: indexPath)
-   
+        
+        let cell = tableView.dequeueReusableCell(withIdentifier: "ItemCell", for: indexPath) as! ItemTableViewCell
+        
+        configureCell(cell: cell, indexPath: indexPath as NSIndexPath)
+        
         return cell
     }
     
     // MARK: - Helpers
+    
+    func configureCell(cell: ItemTableViewCell, indexPath: NSIndexPath) {
+        let item = fetchedResultsController.object(at: indexPath as IndexPath)
+        cell.configureCell(item: item)
+    }
+    
+    // MARK: - CoreData Helpers
+    
+    func loadFakeData() {
+        
+        let item = Item(context: context)
+        item.title = "MacBook Pro"
+        item.price = 1800
+        item.details = "Toolbar... yay or neh?"
+        item.created = NSDate()
+        
+        let item2 = Item(context: context)
+        item2.title = "Apple Watch Series 2"
+        item2.price = 1800
+        item2.details = "Useful? I hope so."
+        item.created = NSDate()
+        
+        let item3 = Item(context: context)
+        item3.title = "iMac"
+        item3.price = 1800
+        item3.details = "iMac for home"
+        item.created = NSDate()
+        
+        ad.saveContext()
+        
+    }
+    
+    
     func attemptFetch() {
         
         // Create fetch request
         let fetchRequest: NSFetchRequest<Item> = Item.fetchRequest()
         
         // Sort
-        let recentSort = NSSortDescriptor(key: "created", ascending: false)
+        let recentSort = NSSortDescriptor(key: "title", ascending: false)
         
         fetchRequest.sortDescriptors = [recentSort]
         
         // FRC Controller
-        let controller = NSFetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: context, sectionNameKeyPath: nil, cacheName: nil)
-        
-        self.fetchedResultsController = controller
+        self.fetchedResultsController = NSFetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: context, sectionNameKeyPath: nil, cacheName: nil)
         
         // Perform fetch
         do {
@@ -98,10 +149,12 @@ class HomeVC: UIViewController, UITableViewDelegate, UITableViewDataSource, NSFe
             
         case .update:
             if let indexPath = indexPath {
+                // When a cell is updated, update the cell locally
                 let cell = itemTableView.cellForRow(at: indexPath) as! ItemTableViewCell
-                // update cell data
+                configureCell(cell: cell, indexPath: indexPath as NSIndexPath)
             }
             break
+            
         case .move:
             if let indexPath = indexPath {
                 itemTableView.deleteRows(at: [indexPath], with: .fade)

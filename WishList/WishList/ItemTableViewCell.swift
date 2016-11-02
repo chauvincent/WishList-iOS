@@ -24,5 +24,11 @@ class ItemTableViewCell: UITableViewCell {
         super.setSelected(selected, animated: animated)
         
     }
+    
+    func configureCell(item: Item) {
+        itemNameLabel.text = item.title
+        itemPriceLabel.text = "$\(item.price)"
+        itemDescriptionLabel.text = item.details
+    }
 
 }
