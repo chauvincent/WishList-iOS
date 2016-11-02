@@ -120,6 +120,8 @@ class HomeVC: UIViewController, UITableViewDelegate, UITableViewDataSource, NSFe
         
     }
     
+    // MARK: - NSFetchedResultsControllerDelegate
+    
     // When table view updates, listen for changes and handle it
     func controllerWillChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
         itemTableView.beginUpdates()
