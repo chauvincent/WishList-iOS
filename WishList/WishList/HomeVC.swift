@@ -28,13 +28,13 @@ class HomeVC: UIViewController, UITableViewDelegate, UITableViewDataSource, NSFe
     }
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+      
         if segue.identifier == "ItemToDetailSegue" {
-            if let destinationVC = segue.destination as? ItemDetailsVC {
-                if let item = sender as? Item {
-                    destinationVC.editItem = item
-                }
-            }
+            guard let destinationVC = segue.destination as? ItemDetailsVC else { return }
+            guard let item = sender as? Item else { return }
+            destinationVC.editItem = item
         }
+        
     }
     
     // MARK: - UITableViewDataSource
@@ -51,12 +51,12 @@ class HomeVC: UIViewController, UITableViewDelegate, UITableViewDataSource, NSFe
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
-        if let sections = fetchedResultsController.sections {
-            let sectionInfo = sections[section]
-            return sectionInfo.numberOfObjects
-        }
+        guard let sections = fetchedResultsController.sections else { return 0 }
         
-        return 0
+        let sectionInfo = sections[section]
+        
+        return sectionInfo.numberOfObjects
+        
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {
