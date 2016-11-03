@@ -22,7 +22,7 @@ class HomeVC: UIViewController, UITableViewDelegate, UITableViewDataSource, NSFe
         itemTableView.dataSource = self
         
         attemptFetch()
-        loadFakeData()
+      //  loadFakeData()
       
     }
 
@@ -47,9 +47,11 @@ class HomeVC: UIViewController, UITableViewDelegate, UITableViewDataSource, NSFe
         
         return 0
     }
+    
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 150
     }
+    
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         let cell = tableView.dequeueReusableCell(withIdentifier: "ItemCell", for: indexPath) as! ItemTableViewCell

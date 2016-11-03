@@ -9,11 +9,17 @@
 import UIKit
 
 class ItemDetailsVC: UIViewController {
-
+    
+    @IBOutlet weak var itemImageView: UIImageView!
+    @IBOutlet weak var pickerView: UIPickerView!
+    @IBOutlet weak var saveButton: UIButton!
+    @IBOutlet weak var detailLabel: UITextField!
+    @IBOutlet weak var priceLabel: UITextField!
+    @IBOutlet weak var titleNameLabel: UITextField!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
     }
 
     override func didReceiveMemoryWarning() {
