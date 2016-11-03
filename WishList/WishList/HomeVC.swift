@@ -23,7 +23,7 @@ class HomeVC: UIViewController, UITableViewDelegate, UITableViewDataSource, NSFe
         itemTableView.dataSource = self
         
         attemptFetch()
-      //  loadFakeData()
+        loadFakeData()
       
     }
 
@@ -108,6 +108,7 @@ class HomeVC: UIViewController, UITableViewDelegate, UITableViewDataSource, NSFe
         // FRC Controller
         self.fetchedResultsController = NSFetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: context, sectionNameKeyPath: nil, cacheName: nil)
         
+        fetchedResultsController.delegate = self
         // Perform fetch
         do {
             

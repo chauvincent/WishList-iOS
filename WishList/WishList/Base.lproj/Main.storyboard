@@ -211,6 +211,9 @@
                                     <constraint firstAttribute="height" constant="30" id="udz-jo-DRy"/>
                                 </constraints>
                                 <state key="normal" title="Save"/>
+                                <connections>
+                                    <action selector="saveButtonPressed:" destination="G4z-Ho-PDq" eventType="touchUpInside" id="ZRt-Sx-qrm"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -244,12 +247,12 @@
                     </navigationItem>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
-                        <outlet property="detailLabel" destination="A29-Wn-acw" id="7go-7I-0Bn"/>
+                        <outlet property="detailTextField" destination="A29-Wn-acw" id="sab-e1-PJV"/>
                         <outlet property="itemImageView" destination="75I-bQ-sr8" id="OI3-xB-dFV"/>
                         <outlet property="pickerView" destination="pW7-RK-zl2" id="5D3-5j-eOD"/>
-                        <outlet property="priceLabel" destination="Zjs-bs-AvF" id="9nc-Sc-NTL"/>
+                        <outlet property="priceTextField" destination="Zjs-bs-AvF" id="JA8-oy-4BV"/>
                         <outlet property="saveButton" destination="wDt-4u-ve6" id="4s7-N0-qzF"/>
-                        <outlet property="titleNameLabel" destination="OCe-Lb-VW2" id="YK7-ha-KPu"/>
+                        <outlet property="titleTextField" destination="OCe-Lb-VW2" id="Caz-ad-Dqm"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="MhE-zA-C0S" userLabel="First Responder" sceneMemberID="firstResponder"/>

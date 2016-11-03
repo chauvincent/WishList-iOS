@@ -14,9 +14,10 @@ class ItemDetailsVC: UIViewController, UIPickerViewDelegate, UIPickerViewDataSou
     @IBOutlet weak var itemImageView: UIImageView!
     @IBOutlet weak var pickerView: UIPickerView!
     @IBOutlet weak var saveButton: UIButton!
-    @IBOutlet weak var detailLabel: UITextField!
-    @IBOutlet weak var priceLabel: UITextField!
-    @IBOutlet weak var titleNameLabel: UITextField!
+
+    @IBOutlet weak var titleTextField: UITextField!
+    @IBOutlet weak var priceTextField: UITextField!
+    @IBOutlet weak var detailTextField: UITextField!
     
     var stores = [Store]()
 
@@ -30,6 +31,7 @@ class ItemDetailsVC: UIViewController, UIPickerViewDelegate, UIPickerViewDataSou
     }
 
     // MARK: - Core Data Helpers
+    
     func loadFakeStores() {
         
         let store = Store(context: context)
@@ -44,9 +46,34 @@ class ItemDetailsVC: UIViewController, UIPickerViewDelegate, UIPickerViewDataSou
         store5.name = "Apple Store Palo Alto"
         
         ad.saveContext()
+        
     }
     
+    // MARK: - IBActions
+    
+    @IBAction func saveButtonPressed(_ sender: Any) {
+        
+        let item = Item(context: context)
+        
+        guard let title = titleTextField.text else { return }
+        item.title = title
+        
+        guard let details = detailTextField.text else { return }
+        item.details = details
+        
+        if let price = priceTextField.text {
+            item.price = (price as NSString).doubleValue
+        }
+        
+        // Store Item Relationship
+        item.toStore = stores[pickerView.selectedRow(inComponent: 0)]
+        ad.saveContext()
+        
+        _ =  navigationController?.popViewController(animated: true)
+    }
+
     // MARK: - Fetch
+    
     func loadStores() {
         
         // Create fetch request
@@ -56,16 +83,14 @@ class ItemDetailsVC: UIViewController, UIPickerViewDelegate, UIPickerViewDataSou
             
             self.stores = try context.fetch(fetchRequest)
             self.pickerView.reloadAllComponents()
+            
         } catch {
             
             let error = error as NSError
             print("\(error)")
             
         }
-        
     }
-    
-    
     
     // MARK: - <UIPickerViewDataSource>
     
