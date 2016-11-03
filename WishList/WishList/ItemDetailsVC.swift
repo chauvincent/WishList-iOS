@@ -20,16 +20,50 @@ class ItemDetailsVC: UIViewController, UIPickerViewDelegate, UIPickerViewDataSou
     @IBOutlet weak var detailTextField: UITextField!
     
     var stores = [Store]()
-
+    var editItem: Item?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
     
         pickerView.delegate = self
         pickerView.dataSource = self
-        loadFakeStores()
+        
+        if editItem != nil {
+            loadEditItem()
+        }
+        
+        //loadFakeStores()
         loadStores()
     }
 
+    // MARK: - Edit Item
+    func loadEditItem() {
+        
+        if let item = editItem {
+            titleTextField.text = item.title
+            priceTextField.text = "\(item.price)"
+            detailTextField.text = item.details
+            
+            guard let store = item.toStore else { return }
+            
+            var index = 0
+            
+            while index < stores.count {
+                
+                let currentStore = stores[index]
+                
+                if currentStore.name == store.name {
+                    pickerView.selectRow(index, inComponent: 0, animated: true)
+                    break
+                }
+                
+                index += 1
+            }
+        }
+        
+    }
+    
+    
     // MARK: - Core Data Helpers
     
     func loadFakeStores() {
@@ -53,7 +87,14 @@ class ItemDetailsVC: UIViewController, UIPickerViewDelegate, UIPickerViewDataSou
     
     @IBAction func saveButtonPressed(_ sender: Any) {
         
-        let item = Item(context: context)
+        var item: Item!
+        
+        if editItem == nil {
+            item = Item(context: context)
+        
+        } else {
+            item = editItem
+        }
         
         guard let title = titleTextField.text else { return }
         item.title = title

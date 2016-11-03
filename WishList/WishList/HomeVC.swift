@@ -23,11 +23,31 @@ class HomeVC: UIViewController, UITableViewDelegate, UITableViewDataSource, NSFe
         itemTableView.dataSource = self
         
         attemptFetch()
-        loadFakeData()
+      //  loadFakeData()
       
     }
 
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "ItemToDetailSegue" {
+            if let destinationVC = segue.destination as? ItemDetailsVC {
+                if let item = sender as? Item {
+                    destinationVC.editItem = item
+                }
+            }
+        }
+    }
+    
     // MARK: - UITableViewDataSource
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
+        if let allObjects = fetchedResultsController.fetchedObjects, allObjects.count > 0 {
+            let item = allObjects[indexPath.row]
+            performSegue(withIdentifier: "ItemToDetailSegue", sender: item)
+        }
+        
+    }
+    
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
@@ -49,6 +69,7 @@ class HomeVC: UIViewController, UITableViewDelegate, UITableViewDataSource, NSFe
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        
         return 150
     }
     
