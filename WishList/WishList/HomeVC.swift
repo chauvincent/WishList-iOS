@@ -18,6 +18,7 @@ class HomeVC: UIViewController, UITableViewDelegate, UITableViewDataSource, NSFe
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         itemTableView.delegate = self
         itemTableView.dataSource = self
         
@@ -28,7 +29,6 @@ class HomeVC: UIViewController, UITableViewDelegate, UITableViewDataSource, NSFe
 
     // MARK: - UITableViewDataSource
     
-
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
         if let sections = fetchedResultsController.sections {
@@ -127,8 +127,6 @@ class HomeVC: UIViewController, UITableViewDelegate, UITableViewDataSource, NSFe
     // When table view updates, listen for changes and handle it
     func controllerWillChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
         itemTableView.beginUpdates()
-        
-        
     }
     
     // Once table view did change
@@ -145,6 +143,7 @@ class HomeVC: UIViewController, UITableViewDelegate, UITableViewDataSource, NSFe
                 itemTableView.insertRows(at: [indexPath], with: .fade)
             }
             break
+            
         case .delete:
             if let indexPath = indexPath {
                 itemTableView.deleteRows(at: [indexPath], with: .fade)
