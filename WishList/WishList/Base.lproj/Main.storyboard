@@ -215,6 +215,12 @@
                                     <action selector="saveButtonPressed:" destination="G4z-Ho-PDq" eventType="touchUpInside" id="ZRt-Sx-qrm"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Af0-Bg-3G6">
+                                <rect key="frame" x="16" y="72" width="100" height="100"/>
+                                <connections>
+                                    <action selector="imageButtonPressed:" destination="G4z-Ho-PDq" eventType="touchUpInside" id="yNf-kK-ona"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
@@ -227,6 +233,7 @@
                             <constraint firstItem="A29-Wn-acw" firstAttribute="leading" secondItem="eG2-7Z-Wod" secondAttribute="leading" id="K05-GS-4Qm"/>
                             <constraint firstItem="75I-bQ-sr8" firstAttribute="top" secondItem="HIH-V0-9Sk" secondAttribute="bottom" constant="8" symbolic="YES" id="KQl-Hk-CEK"/>
                             <constraint firstItem="wDt-4u-ve6" firstAttribute="top" secondItem="pW7-RK-zl2" secondAttribute="bottom" constant="8" symbolic="YES" id="Kwc-JW-5kL"/>
+                            <constraint firstItem="OCe-Lb-VW2" firstAttribute="leading" secondItem="Af0-Bg-3G6" secondAttribute="trailing" constant="8" symbolic="YES" id="LqH-Wt-tW6"/>
                             <constraint firstItem="OCe-Lb-VW2" firstAttribute="trailing" secondItem="Zjs-bs-AvF" secondAttribute="trailing" id="PjQ-bw-THh"/>
                             <constraint firstItem="eG2-7Z-Wod" firstAttribute="top" secondItem="A29-Wn-acw" secondAttribute="bottom" constant="31" id="RLg-Sd-w7D"/>
                             <constraint firstItem="pW7-RK-zl2" firstAttribute="leading" secondItem="Lir-tO-kBo" secondAttribute="leadingMargin" constant="18" id="UQe-2L-gjn"/>
@@ -234,20 +241,28 @@
                             <constraint firstItem="pW7-RK-zl2" firstAttribute="centerX" secondItem="wDt-4u-ve6" secondAttribute="centerX" id="a88-WQ-Kz5"/>
                             <constraint firstItem="A29-Wn-acw" firstAttribute="trailing" secondItem="Lir-tO-kBo" secondAttribute="trailingMargin" id="eFS-9j-RcQ"/>
                             <constraint firstItem="A29-Wn-acw" firstAttribute="trailing" secondItem="eG2-7Z-Wod" secondAttribute="trailing" id="eg3-ES-J4f"/>
+                            <constraint firstItem="Af0-Bg-3G6" firstAttribute="leading" secondItem="75I-bQ-sr8" secondAttribute="leading" id="enF-qf-WIT"/>
                             <constraint firstItem="OCe-Lb-VW2" firstAttribute="leading" secondItem="75I-bQ-sr8" secondAttribute="trailing" constant="8" symbolic="YES" id="hTx-7H-3iw"/>
                             <constraint firstItem="0F3-Bo-NrQ" firstAttribute="top" secondItem="wDt-4u-ve6" secondAttribute="bottom" constant="130" id="hWm-7p-FMn"/>
                             <constraint firstItem="75I-bQ-sr8" firstAttribute="leading" secondItem="A29-Wn-acw" secondAttribute="leading" id="i0j-cJ-oXS"/>
+                            <constraint firstItem="Af0-Bg-3G6" firstAttribute="top" secondItem="75I-bQ-sr8" secondAttribute="top" id="kQx-9Q-dMy"/>
+                            <constraint firstItem="A29-Wn-acw" firstAttribute="top" secondItem="Af0-Bg-3G6" secondAttribute="bottom" constant="8" symbolic="YES" id="kYw-CB-cip"/>
                             <constraint firstItem="pW7-RK-zl2" firstAttribute="top" secondItem="eG2-7Z-Wod" secondAttribute="bottom" constant="8" symbolic="YES" id="lPI-L6-OVB"/>
                             <constraint firstItem="A29-Wn-acw" firstAttribute="top" secondItem="75I-bQ-sr8" secondAttribute="bottom" constant="8" symbolic="YES" id="ue7-jW-Imr"/>
                         </constraints>
                     </view>
                     <toolbarItems/>
                     <navigationItem key="navigationItem" title="Title" id="S98-EX-3H5">
-                        <barButtonItem key="rightBarButtonItem" systemItem="trash" id="bDl-1U-xEY"/>
+                        <barButtonItem key="rightBarButtonItem" systemItem="trash" id="bDl-1U-xEY">
+                            <connections>
+                                <action selector="deleteButtonPressed:" destination="G4z-Ho-PDq" id="kqQ-Tf-mDh"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="detailTextField" destination="A29-Wn-acw" id="sab-e1-PJV"/>
+                        <outlet property="imageButton" destination="Af0-Bg-3G6" id="heJ-DX-c7P"/>
                         <outlet property="itemImageView" destination="75I-bQ-sr8" id="OI3-xB-dFV"/>
                         <outlet property="pickerView" destination="pW7-RK-zl2" id="5D3-5j-eOD"/>
                         <outlet property="priceTextField" destination="Zjs-bs-AvF" id="JA8-oy-4BV"/>
@@ -285,6 +300,6 @@
         <image name="placeholder" width="470" height="470"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="fJu-iW-MkB"/>
+        <segue reference="TyN-7u-GIQ"/>
     </inferredMetricsTieBreakers>
 </document>

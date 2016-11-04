@@ -9,8 +9,9 @@
 import UIKit
 import CoreData
 
-class ItemDetailsVC: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource {
+class ItemDetailsVC: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     
+    @IBOutlet weak var imageButton: UIButton!
     @IBOutlet weak var itemImageView: UIImageView!
     @IBOutlet weak var pickerView: UIPickerView!
     @IBOutlet weak var saveButton: UIButton!
@@ -19,6 +20,7 @@ class ItemDetailsVC: UIViewController, UIPickerViewDelegate, UIPickerViewDataSou
     @IBOutlet weak var priceTextField: UITextField!
     @IBOutlet weak var detailTextField: UITextField!
     
+    var imagePicker: UIImagePickerController!
     var stores = [Store]()
     var editItem: Item?
     
@@ -34,6 +36,9 @@ class ItemDetailsVC: UIViewController, UIPickerViewDelegate, UIPickerViewDataSou
         
         //loadFakeStores()
         loadStores()
+        
+        imagePicker = UIImagePickerController()
+        imagePicker.delegate = self
     }
 
     // MARK: - Edit Item
@@ -85,6 +90,21 @@ class ItemDetailsVC: UIViewController, UIPickerViewDelegate, UIPickerViewDataSou
     
     // MARK: - IBActions
     
+    @IBAction func imageButtonPressed(_ sender: Any) {
+        
+          present(imagePicker, animated: true, completion: nil)
+        
+    }
+    
+    @IBAction func deleteButtonPressed(_ sender: Any) {
+        
+        guard let item = editItem else { return }
+        context.delete(item)
+        ad.saveContext()
+        _ =  navigationController?.popViewController(animated: true)
+    
+    }
+
     @IBAction func saveButtonPressed(_ sender: Any) {
         
         var item: Item!
@@ -153,7 +173,17 @@ class ItemDetailsVC: UIViewController, UIPickerViewDelegate, UIPickerViewDataSou
     }
     
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-        
+      
     }
 
+    // MARK: - <UIImagePickerDelegate>
+    
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
+        
+        guard let image = info[UIImagePickerControllerOriginalImage] as? UIImage else { return }
+        itemImageView.image = image
+        imagePicker.dismiss(animated: true, completion: nil)
+    }
+    
+    
 }
