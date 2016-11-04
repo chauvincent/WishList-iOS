@@ -23,7 +23,7 @@ class HomeVC: UIViewController, UITableViewDelegate, UITableViewDataSource, NSFe
         itemTableView.dataSource = self
         
         attemptFetch()
-      //  loadFakeData()
+        loadFakeData()
       
     }
 

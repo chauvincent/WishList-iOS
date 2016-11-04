@@ -45,9 +45,12 @@ class ItemDetailsVC: UIViewController, UIPickerViewDelegate, UIPickerViewDataSou
     func loadEditItem() {
         
         if let item = editItem {
+            
             titleTextField.text = item.title
             priceTextField.text = "\(item.price)"
             detailTextField.text = item.details
+            
+            itemImageView.image = item.toWishImage?.image as? UIImage
             
             guard let store = item.toStore else { return }
             
@@ -108,6 +111,8 @@ class ItemDetailsVC: UIViewController, UIPickerViewDelegate, UIPickerViewDataSou
     @IBAction func saveButtonPressed(_ sender: Any) {
         
         var item: Item!
+        let wishImg = Image(context: context)
+        wishImg.image = itemImageView.image
         
         if editItem == nil {
             item = Item(context: context)
@@ -125,6 +130,9 @@ class ItemDetailsVC: UIViewController, UIPickerViewDelegate, UIPickerViewDataSou
         if let price = priceTextField.text {
             item.price = (price as NSString).doubleValue
         }
+        
+        // Save to image relationship
+        item.toWishImage = wishImg
         
         // Store Item Relationship
         item.toStore = stores[pickerView.selectedRow(inComponent: 0)]

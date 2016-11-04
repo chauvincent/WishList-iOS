@@ -1,5 +1,10 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="11542" systemVersion="16B2555" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
+    <entity name="Image" representedClassName="Image" syncable="YES" codeGenerationType="class">
+        <attribute name="image" optional="YES" attributeType="Transformable" syncable="YES"/>
+        <relationship name="toItem" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Item" inverseName="toWishImage" inverseEntity="Item" syncable="YES"/>
+        <relationship name="toStore" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Store" inverseName="toWishImage" inverseEntity="Store" syncable="YES"/>
+    </entity>
     <entity name="Item" representedClassName="Item" syncable="YES" codeGenerationType="class">
         <attribute name="created" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
         <attribute name="details" optional="YES" attributeType="String" syncable="YES"/>
@@ -7,7 +12,7 @@
         <attribute name="title" optional="YES" attributeType="String" syncable="YES"/>
         <relationship name="toItemCategory" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="ItemCategory" inverseName="toItem" inverseEntity="ItemCategory" syncable="YES"/>
         <relationship name="toStore" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Store" inverseName="toItem" inverseEntity="Store" syncable="YES"/>
-        <relationship name="toWishImage" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="WishImage" inverseName="toItem" inverseEntity="WishImage" syncable="YES"/>
+        <relationship name="toWishImage" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Image" inverseName="toItem" inverseEntity="Image" syncable="YES"/>
     </entity>
     <entity name="ItemCategory" representedClassName="ItemCategory" syncable="YES" codeGenerationType="class">
         <attribute name="category" optional="YES" attributeType="String" syncable="YES"/>
@@ -16,17 +21,12 @@
     <entity name="Store" representedClassName="Store" syncable="YES" codeGenerationType="class">
         <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
         <relationship name="toItem" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Item" inverseName="toStore" inverseEntity="Item" syncable="YES"/>
-        <relationship name="toWishImage" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="WishImage" inverseName="toStore" inverseEntity="WishImage" syncable="YES"/>
-    </entity>
-    <entity name="WishImage" representedClassName="WishImage" syncable="YES" codeGenerationType="class">
-        <attribute name="image" optional="YES" attributeType="Transformable" syncable="YES"/>
-        <relationship name="toItem" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Item" inverseName="toWishImage" inverseEntity="Item" syncable="YES"/>
-        <relationship name="toStore" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Store" inverseName="toWishImage" inverseEntity="Store" syncable="YES"/>
+        <relationship name="toWishImage" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Image" inverseName="toStore" inverseEntity="Image" syncable="YES"/>
     </entity>
     <elements>
         <element name="Item" positionX="135" positionY="39" width="128" height="148"/>
-        <element name="WishImage" positionX="387" positionY="81" width="128" height="88"/>
-        <element name="Store" positionX="115" positionY="387" width="128" height="88"/>
         <element name="ItemCategory" positionX="-128" positionY="99" width="128" height="75"/>
+        <element name="Store" positionX="115" positionY="387" width="128" height="88"/>
+        <element name="Image" positionX="387" positionY="81" width="128" height="88"/>
     </elements>
 </model>
