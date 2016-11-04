@@ -82,6 +82,15 @@ class HomeVC: UIViewController, UITableViewDelegate, UITableViewDataSource, NSFe
         return cell
     }
     
+    
+    // MARK: - IBActions
+    
+    @IBAction func segmentedChanged(_ sender: Any) {
+        attemptFetch()
+        itemTableView.reloadData()
+    }
+    
+    
     // MARK: - Helpers
     
     func configureCell(cell: ItemTableViewCell, indexPath: NSIndexPath) {
@@ -122,9 +131,28 @@ class HomeVC: UIViewController, UITableViewDelegate, UITableViewDataSource, NSFe
         let fetchRequest: NSFetchRequest<Item> = Item.fetchRequest()
         
         // Sort
-        let recentSort = NSSortDescriptor(key: "title", ascending: false)
+        let titleSort = NSSortDescriptor(key: "title", ascending: true)
         
-        fetchRequest.sortDescriptors = [recentSort]
+        let recentSort = NSSortDescriptor(key: "created", ascending: false)
+        
+        let priceSort = NSSortDescriptor(key: "price", ascending: true)
+        
+        switch categorySegmentedControl.selectedSegmentIndex {
+        case 0:
+            fetchRequest.sortDescriptors = [recentSort]
+            break
+        case 1:
+            fetchRequest.sortDescriptors = [priceSort]
+            break
+        case 2:
+               fetchRequest.sortDescriptors = [titleSort]
+            break
+        default:
+            break
+        }
+        
+        
+     
         
         // FRC Controller
         self.fetchedResultsController = NSFetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: context, sectionNameKeyPath: nil, cacheName: nil)
